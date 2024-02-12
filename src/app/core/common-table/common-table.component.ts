@@ -37,9 +37,7 @@ export class CommonTableComponent {
     public gettabledata: TableService,
     public route: ActivatedRoute
   ) {
-
   }
-
   ngOnInit() {
     this.nodes = [
       {
@@ -96,15 +94,6 @@ export class CommonTableComponent {
       }
     ];
     this.nodes.forEach((node: any) => this.expandChildren(node));
-
-    this.nodes.forEach((data: any) => {
-      data.children.forEach((element: any) => {
-        this.all.push(element.children)
-
-
-      });
-    });
-
   }
 
   getShortName(fullName: any) {
@@ -132,19 +121,18 @@ export class CommonTableComponent {
     }
   }
 
-
-  matchNodeAndSelect() {
+  pushAlltheData() {
     this.selected = [];
     this.allChild.forEach((childLabel: string) => {
-      this.findAndSelectNode(childLabel, this.nodes);
+      this.alldataUser(childLabel, this.nodes);
     });
   }
 
-  findAndSelectNode(label: string, nodes: any[]) {
+  alldataUser(label: string, nodes: any[]) {
     debugger
     nodes.forEach(node => {
       if (node.children) {
-        this.findAndSelectNode(label, node.children);
+        this.alldataUser(label, node.children);
       } else {
         if (node.label === label) {
           this.selected.push(node);

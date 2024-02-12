@@ -8,7 +8,7 @@
     <p-avatar shape="circle" styleClass="mb-3" size="large" *ngIf="i < 3 || avatarArray.length <= 3; else moreAvatars">
       <span class="text-base">
         {{ getShortName(name.label) }}
-      </span>   
+      </span>
     </p-avatar>
     <ng-template #moreAvatars>
       <ng-container *ngIf="i === 3">
@@ -42,5 +42,7 @@
   </div>
 </div>
 <div class="card flex justify-content-center">
-  <p-button (click)="matchNodeAndSelect()" pRipple class="p-button-success">Submit</p-button>
+  <p-button (click)="pushAlltheData()" pRipple class="p-button-success">Submit</p-button>
 </div>
+
+
