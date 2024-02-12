@@ -129,7 +129,6 @@ export class CommonTableComponent {
   }
 
   alldataUser(label: string, nodes: any[]) {
-    debugger
     nodes.forEach(node => {
       if (node.children) {
         this.alldataUser(label, node.children);
