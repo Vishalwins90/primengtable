@@ -1,0 +1,46 @@
+<h1 style="text-align: center; color: red;">Table Tree Select</h1>
+<div class="card flex justify-content-center" style="text-align: center;">
+  <p-treeSelect (onHide)="onHide($event)" class="w-full md:w-20rem" containerStyleClass="w-full" [(ngModel)]="selected"
+    [options]="nodes" selectionMode="checkbox" placeholder="Select Item"></p-treeSelect>
+</div>
+<p-avatarGroup>
+  <ng-container *ngFor="let name of avatarArray; let i = index">
+    <p-avatar shape="circle" styleClass="mb-3" size="large" *ngIf="i < 3 || avatarArray.length <= 3; else moreAvatars">
+      <span class="text-base">
+        {{ getShortName(name.label) }}
+      </span>   
+    </p-avatar>
+    <ng-template #moreAvatars>
+      <ng-container *ngIf="i === 3">
+        <p-avatar shape="circle" styleClass="mb-3" size="large">
+          <span class="text-base">+{{ avatarArray.length - 3 }}</span>
+        </p-avatar>
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</p-avatarGroup>
+<h1 style="color:purple;">All the child of Tree Select</h1>
+<div class="card flex justify-content-center gap-3" style="margin-top: 20px;">
+  <div class="flex align-items-center">
+    <p-checkbox label="Vishal kumar(9th class)" name="child1" value="Vishal Kumar" [(ngModel)]="allChild"></p-checkbox>
+  </div>
+  <div class="flex align-items-center">
+    <p-checkbox label="Sumit kumar(9th class)" name="child2" value="Sumit kumar" [(ngModel)]="allChild"></p-checkbox>
+  </div>
+  <div class="flex align-items-center">
+    <p-checkbox label="Ram kumar (10th class)" name="child3" value="Ram kumar" [(ngModel)]="allChild"></p-checkbox>
+  </div>
+  <div class="flex align-items-center">
+    <p-checkbox label="Shivam kumar (10th class)" name="child4" value="Shivam kumar"
+      [(ngModel)]="allChild"></p-checkbox>
+  </div>
+  <div class="flex align-items-center">
+    <p-checkbox label="Don kumar (11th class)" name="child5" value="Don kumar" [(ngModel)]="allChild"></p-checkbox>
+  </div>
+  <div class="flex align-items-center">
+    <p-checkbox label="Rahul  kumar (11th class)" name="child6" value="Rahul signh" [(ngModel)]="allChild"></p-checkbox>
+  </div>
+</div>
+<div class="card flex justify-content-center">
+  <p-button (click)="matchNodeAndSelect()" pRipple class="p-button-success">Submit</p-button>
+</div>
