@@ -47,15 +47,24 @@ export class CommonTableComponent {
         "children": [
           {
             key: '0-0',
-            "label": "Students",
+            "label": "Student A",
             "icon": "pi pi-folder",
-
             "children": [
               { key: '0-0-0', label: 'Vishal Kumar', Rollno: 12 },
               { key: '0-0-1', label: 'Sumit kumar', Rollno: 35 },
-
             ]
           },
+          {
+            key: '0-1',
+            "label": "Student B",
+            "icon": "pi pi-folder",
+
+            "children": [
+              { key: '0-1-0', label: 'Pinki Kumari', Rollno: 13 },
+              { key: '1-1-1', label: 'Pawan kumar', Rollno: 80 },
+
+            ]
+          }
 
         ],
       },
@@ -124,6 +133,7 @@ export class CommonTableComponent {
   pushAlltheData() {
     this.selected = [];
     this.allChild.forEach((childLabel: string) => {
+      debugger
       this.alldataUser(childLabel, this.nodes);
     });
   }
@@ -132,12 +142,17 @@ export class CommonTableComponent {
     nodes.forEach(node => {
       if (node.children) {
         this.alldataUser(label, node.children);
+        const allChildren = node.children.every((child: any) => this.selected.includes(child));
+        if (allChildren && !this.selected.includes(node)) {
+          this.selected.push(node);
+        }
       } else {
-        if (node.label === label) {
+        if (node.label === label && !this.selected.includes(node)) {
           this.selected.push(node);
         }
       }
-    });
+    }); 
   }
+  
 }
 
